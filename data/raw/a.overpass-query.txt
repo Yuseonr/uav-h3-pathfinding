@@ -1,0 +1,96 @@
+# Bandara 
+
+[out:json][timeout:25];
+area["name"="Kota Semarang"]->.searchArea;
+(
+  node["aeroway"="aerodrome"]["name"!="Semarang Drone Prix Arena"](area.searchArea);
+  way["aeroway"="aerodrome"]["name"!="Semarang Drone Prix Arena"](area.searchArea);
+  relation["aeroway"="aerodrome"]["name"!="Semarang Drone Prix Arena"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+----------------------------------------------------------------------------------------------------------------
+
+# Penerbangan (KKOP)
+
+[out:json][timeout:25];
+area["name"="Kota Semarang"]->.searchArea;
+(
+  node["aeroway"="runway"](area.searchArea);
+  way["aeroway"="runway"](area.searchArea);
+  relation["aeroway"="runway"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+----------------------------------------------------------------------------------------------------------------
+
+# Militer
+
+[out:json][timeout:25];
+area["name"="Kota Semarang"]->.searchArea;
+(
+  node["landuse"="military"](area.searchArea);
+  way["landuse"="military"](area.searchArea);
+  relation["landuse"="military"](area.searchArea);
+  node["military"](area.searchArea);
+  way["military"](area.searchArea);
+  relation["military"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+----------------------------------------------------------------------------------------------------------------
+
+# Tower SUTT 150kv / jalur listrik tegangan tinggi
+
+[out:json][timeout:25];
+area["name"="Kota Semarang"]->.searchArea;
+(
+  way["power"="line"]["voltage"="150000"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+----------------------------------------------------------------------------------------------------------------
+
+# Gedung tinggi disemarang yang memiliki lantai >5
+
+[out:json][timeout:25];
+area["name"="Kota Semarang"]->.searchArea;
+(
+  way["building"]["building:levels"~"^([5-9]|[1-9][0-9])$"](area.searchArea);
+  relation["building"]["building:levels"~"^([5-9]|[1-9][0-9])$"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+-----------------------------------------------------------------------------------------------------------------
+
+# Keterangan zona-penerbangan-ayani.geojson
+# Bukan penerapan KKOP yang sebenernya namun digunakan untuk simulasi saja
+
+Zona berupa radius lingkaran pengaman sejauh 1,5 km dari pusat koordinat bandara, 
+kemudian union dengan Koridor Lintasan Pendekatan Udara searah landasan pacu yang diperpanjang 
+sejauh 3 km ke luar dari masing-masing ujungnya dengan lebar total koridor sebesar 1 km (500 meter kanan-kiri)
+
+-----------------------------------------------------------------------------------------------------------------
+
+# Keterangan gap-tower-sutt-semarang.geojson
+# Jalur listrik tegangan tinggi (SUTT) 150kv, bisa menyebabkan gelombang elktromagnetik yang mengganggu uav
+# jadi di buffer 50m dari jalur + menggabung line pararel agar tidak ada drone menggunakan jalur tengah
+# Untuk simulasi, diberikan gap sebesar 400m setiap 2km agar dapat mensimulasikan zona aman melintas SUTT
+
+====================================================================================================================
+
+Obstacle yang digunakan : 
+1. gedung tinggi 
+2. gap tower SUTT 150kv 
+3. daerah militer
+4. zona penerbangan ayani (KKOP) 

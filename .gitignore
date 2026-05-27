@@ -1,0 +1,10 @@
+# MacOS system files
+.DS_Store
+
+# local data files
+*.csv
+tes*
+
+# Environment files
+.venv
+.env
