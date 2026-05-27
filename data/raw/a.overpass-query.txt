@@ -85,7 +85,7 @@ sejauh 3 km ke luar dari masing-masing ujungnya dengan lebar total koridor sebes
 # Keterangan gap-tower-sutt-semarang.geojson
 # Jalur listrik tegangan tinggi (SUTT) 150kv, bisa menyebabkan gelombang elktromagnetik yang mengganggu uav
 # jadi di buffer 50m dari jalur + menggabung line pararel agar tidak ada drone menggunakan jalur tengah
-# Untuk simulasi, diberikan gap sebesar 400m setiap 2km agar dapat mensimulasikan zona aman melintas SUTT
+# Untuk simulasi, diberikan gap sebesar 800m setiap 3km agar dapat mensimulasikan zona aman melintas SUTT
 
 ====================================================================================================================
 

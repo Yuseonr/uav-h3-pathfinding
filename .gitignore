@@ -1,9 +1,10 @@
 # MacOS system files
 .DS_Store
+plan.txt
 
 # local data files
 *.csv
-tes*
+*_graph.json
 
 # Environment files
 .venv
