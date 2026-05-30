@@ -66,6 +66,17 @@ func (idm *IDMapper) AddOrGetID(idh3 string) int32 {
 Yuseonr
 
 Deskripsi   : 
+ - GetID mengecek apakah H3 sudah terdaftar kembalikan ID(int32)nya jika belum retunr 0
+*/
+func (idm *IDMapper) GetID(idh3 string) (int32, bool) {
+	id, exists := idm.h3ToID[idh3]
+	return  id, exists
+}
+
+/*
+Yuseonr
+
+Deskripsi   : 
  - GetH3 menerima ID(int32) dan mengembalikan string H3 / IDH3 asli yang sesuai jika ada ata false jika tidak ditemukan
 */
 func (idm *IDMapper) GetH3(id int32) (string, bool) {
