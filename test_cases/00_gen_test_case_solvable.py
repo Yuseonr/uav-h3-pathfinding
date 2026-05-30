@@ -19,6 +19,7 @@ KATEGORI_JARAK = {
 JUMLAH_PER_KATEGORI = 50
 
 def haversine(lat1, lng1, lat2, lng2) -> float:
+    # rumus mengkutip dari : K. Y. Chen, “An Improved A* Search Algorithm for Road Networks Using New Heuristic Estimation,” Jul. 2022, [Online]. Available: http://arxiv.org/abs/2208.00312
     # Menghitung jarak dua koordinat dalam meter menggunakan formula Haversine
     R = 6371000
     lat1, lng1, lat2, lng2 = map(radians, [lat1, lng1, lat2, lng2])
