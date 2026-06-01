@@ -13,9 +13,9 @@ import (
 )
 
 var jsonPaths = []string{
-	"../data/processed/h3_res9_graph.json",
-	"../data/processed/h3_res10_graph.json",
-	"../data/processed/h3_res11_graph.json",
+	"../../data/processed/h3_res9_graph.json",
+	"../../data/processed/h3_res10_graph.json",
+	"../../data/processed/h3_res11_graph.json",
 }
 
 func TestGrafReport(t *testing.T) {

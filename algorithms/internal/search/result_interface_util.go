@@ -37,7 +37,7 @@ func reconstructPath(asalDari []int32, start, goal int32) []int32 {
 	// harus gini karena cara kita menyimpan path (dijelaskan di bfs.go) 
 	// jadi untuk rekonstruksi bakal dari akhir -> dia di expand dari node mana -> ke node itu -> dia diexpand dari node mana ....
 	// hingga sampai ke start kemudian di reverse
-	var jalur []int32
+	jalur := make([]int32, 0, 128)
 	langkahSaatIni := goal
 
 	for langkahSaatIni != start {

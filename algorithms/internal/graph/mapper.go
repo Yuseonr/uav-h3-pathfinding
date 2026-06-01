@@ -8,6 +8,10 @@ Deskripsi   :
 
 package graph
 
+import (
+	h3 "github.com/uber/h3-go/v4"
+)
+
 
 /*
 Yuseonr
@@ -16,11 +20,13 @@ Deskripsi   :
  - IDMapper adalah struct yang menyimpan dua map untuk menerjemahkan antara string H3 dan int32 ID.
  - h3ToID menyimpan mapping dari string H3 ke int32 ID.
  - idToH3 menyimpan mapping dari int32 ID ke string H3.
+ - h3CellToID menyimpan mapping dari h3.Cell ke int32 ID untuk optimisasi LOS.
  - nextID adalah counter untuk memberikan ID baru saat H3 baru ditemukan.
 */
 type IDMapper struct {
 	h3ToID map[string]int32 // mapping dari string H3 ke int32 ID
 	idToH3 map[int32]string // mapping dari int32 ID ke string H3
+	h3CellToID map[h3.Cell]int32 // untuk optimisasi LOS
 	nextID int32			// counter untuk ID berikutnya	
 }
 
@@ -34,6 +40,7 @@ func CreateIDMapper() *IDMapper {
 	return &IDMapper{
 		h3ToID: make(map[string]int32),
 		idToH3: make(map[int32]string),
+		h3CellToID: make(map[h3.Cell]int32),
 		nextID: 0, // ximulai dari indeks 0
 	}
 }
@@ -56,6 +63,9 @@ func (idm *IDMapper) AddOrGetID(idh3 string) int32 {
 	newid := idm.nextID
 	idm.h3ToID[idh3] = newid
 	idm.idToH3[newid] = idh3
+	cell := h3.IndexFromString(idh3)
+    idm.h3CellToID[h3.Cell(cell)] = newid
+
 	// incr untuk ID berikutnya
 	idm.nextID++
 	
@@ -82,4 +92,15 @@ Deskripsi   :
 func (idm *IDMapper) GetH3(id int32) (string, bool) {
 	h3, exists := idm.idToH3[id]
 	return h3, exists
+}
+
+/*
+Yuseonr
+
+Deskripsi   : 
+ - GetIDByCell menerima h3.Cell dan mengembalikan int32 ID jika ada, false jika tidak ditemukan
+*/
+func (idm *IDMapper) GetIDByCell(cell h3.Cell) (int32, bool) {
+    id, exists := idm.h3CellToID[cell]
+    return id, exists
 }

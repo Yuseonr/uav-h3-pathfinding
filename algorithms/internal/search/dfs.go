@@ -30,7 +30,7 @@ func (d *DFS) SearchPath(graf *g.Graph, start, goal int32) Result {
 		asalDari[i] = -1
 	}
 
-	// mulai BFS
+	// mulai DFS
 	// tandai heksagon awal sudah dikunjungi
 	asalDari[start] = start
 

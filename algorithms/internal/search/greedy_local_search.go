@@ -2,7 +2,6 @@ package search
 
 import (
 	"math"
-
 	g "github.com/Yuseonr/uav-h3-pathfinding/algorithms/internal/graph"
 )
 
@@ -48,7 +47,7 @@ func (gls *GLS) SearchPath(graf *g.Graph, start, goal int32) Result {
 		// inisialisasi untuk cari best step nya
 		bestNeighbor := int32(-1)
 		minJarak := math.Inf(1)
-		
+
 		// ambil node dari currenthex
 		currentHexNode := graf.Nodes[currentHex]
 		
