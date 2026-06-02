@@ -5,6 +5,8 @@ plan.txt
 # local data files
 *.csv
 *_graph.json
+data/result/*
+!data/result/.gitkeep
 
 # Environment files
 .venv
