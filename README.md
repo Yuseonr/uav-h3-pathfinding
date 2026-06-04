@@ -19,6 +19,10 @@
 | Load Time  | ~4.5x        | ~6.9x         |
 | Heap Alloc | ~8.0x        | ~7.8x         |
 
+## Hasil Analisis Performa Algoritma Pathfinding
+
+![Analisis Performa Algoritma Pathfinding](docs/assets/analisis_performa_algoritma.png)
+
 ## Obstacles Visual
 
 ![Visualisasi Area Terlarang](docs/assets/area_terlarang.png)
