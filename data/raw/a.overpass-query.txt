@@ -13,7 +13,7 @@ out skel qt;
 
 ----------------------------------------------------------------------------------------------------------------
 
-# Penerbangan (KKOP)
+# Landasan Pacu Bandara 
 
 [out:json][timeout:25];
 area["name"="Kota Semarang"]->.searchArea;
