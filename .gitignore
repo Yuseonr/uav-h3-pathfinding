@@ -10,7 +10,6 @@ analysis/artifak/*
 !analysis/artifak/.gitkeep
 !data/result/.gitkeep
 !data/result/Allbenchmark.csv
-.pdf
 
 # Environment files
 .venv
